@@ -10,7 +10,7 @@ function Cart({ cartItems, removeFromCart, onConfirm }) {
 
       {cartItems.length === 0 ? (
         <div className="cart-empty">
-          <img src="./assets/images/illustration-empty-cart.svg" alt="Empty" />
+          <img src="/assets/images/illustration-empty-cart.svg" alt="Empty" />
           <p>Your added items will appear here</p>
         </div>
       ) : (
@@ -24,7 +24,7 @@ function Cart({ cartItems, removeFromCart, onConfirm }) {
                 <span className="subtotal">${(item.price * item.quantity).toFixed(2)}</span>
               </div>
               <button className="remove-btn" onClick={() => removeFromCart(item.id)}>
-                <img src="./assets/images/icon-remove-item.svg" alt="Remove" />
+                <img src="/assets/images/icon-remove-item.svg" alt="Remove" />
               </button>
             </div>
           ))}
@@ -35,7 +35,7 @@ function Cart({ cartItems, removeFromCart, onConfirm }) {
 
           {/* 2. Added the Carbon Neutral section from the design */}
           <div className="carbon-neutral" style={{ display: 'flex', gap: '8px', justifyContent: 'center', padding: '16px', backgroundColor: 'var(--rose-50)', borderRadius: '8px', margin: '16px 0' }}>
-            <img src="./assets/images/icon-carbon-neutral.svg" alt="" />
+            <img src="/assets/images/icon-carbon-neutral.svg" alt="" />
             <p>This is a <strong>carbon-neutral</strong> delivery</p>
           </div>
 
