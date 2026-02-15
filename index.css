@@ -1,0 +1,203 @@
+:root {
+  /* Colors */
+  --red: hsl(14, 86%, 42%);
+  --green: hsl(159, 69%, 38%);
+  --rose-50: hsl(20, 50%, 98%);
+  --rose-100: hsl(13, 31%, 94%);
+  --rose-300: hsl(14, 25%, 72%);
+  --rose-400: hsl(7, 20%, 60%);
+  --rose-500: hsl(12, 20%, 44%);
+  --rose-900: hsl(14, 65%, 9%);
+
+  /* Typography */
+  --font-family: 'Red Hat Text', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--rose-50);
+  color: var(--rose-900);
+  font-size: 16px;
+  padding: 24px;
+}
+
+/* Container for the whole app */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The Grid of Desserts */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for mobile */
+  gap: 24px;
+  margin-top: 24px;
+}
+
+/* Individual Product Cards */
+.product-card img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.product-info .category {
+  color: var(--rose-500);
+  font-size: 14px;
+  margin-top: 12px;
+  display: block;
+}
+
+.product-info .name {
+  font-weight: 600;
+  font-size: 16px;
+  margin: 4px 0;
+}
+
+.product-info .price {
+  color: var(--red);
+  font-weight: 700;
+}
+
+@media (min-width: 1024px) {
+  .app-container {
+    flex-direction: row; /* Side-by-side layout */
+    align-items: flex-start;
+  }
+
+  .products-section {
+    flex: 2; /* Takes up more space */
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for desktop */
+  }
+
+  .cart-container {
+    flex: 1; /* Sidebar takes up less space */
+    position: sticky;
+    top: 24px;
+  }
+}
+
+.image-wrapper {
+  position: relative;
+  margin-bottom: 24px; /* Space for the button to hang over */
+}
+
+.add-to-cart-btn {
+  position: absolute;
+  bottom: -20px; /* Positions it half-way off the image */
+  left: 50%;
+  transform: translateX(-50%);
+  
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid var(--rose-400);
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.cart-container {
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.cart-container h3 {
+  color: var(--red);
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.cart-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  padding: 16px 0;
+}
+
+.cart-empty p {
+  color: var(--rose-500);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* This class will be toggled via React later */
+.quantity-selector {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pushes icons to the ends */
+  
+  background-color: var(--red);
+  color: white;
+  width: 160px; /* Specific width to match design */
+  padding: 12px 16px;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.qty-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.qty-btn:hover {
+  background-color: white;
+}
+
+/* Change icon color on hover using filter or separate SVGs */
+.qty-btn:hover img {
+  filter: invert(48%) sepia(89%) saturate(1831%) hue-rotate(345deg) brightness(91%) contrast(97%);
+}
+
+/* Desktop specific tweaks */
+@media (min-width: 1024px) {
+  .app-container {
+    display: grid;
+    grid-template-columns: 1fr 350px; /* Fixed width for cart on desktop */
+    gap: 32px;
+    align-items: start;
+  }
+
+  .cart-container {
+    position: sticky;
+    top: 40px;
+  }
+}
